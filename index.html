@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free SEO tools to check title length, preview search snippets, and improve website content.">
+  <title>MetaPilot — Free SEO Tools</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f7f8fc;
+      color: #172033;
+    }
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo { font-size: 24px; font-weight: 800; color: #2457e6; }
+    header span { color: #64748b; font-size: 13px; }
+    main { max-width: 850px; margin: 55px auto; padding: 0 20px; }
+    .hero { text-align: center; margin-bottom: 35px; }
+    .hero h1 { font-size: clamp(30px, 5vw, 44px); margin-bottom: 12px; }
+    .hero p { color: #64748b; line-height: 1.7; }
+    .tool {
+      background: white; padding: 28px; border-radius: 16px;
+      border: 1px solid #e5e7eb; margin-bottom: 22px;
+      box-shadow: 0 8px 28px #17203308;
+    }
+    h2 { margin-top: 0; font-size: 22px; }
+    label { display: block; font-weight: 700; margin: 18px 0 8px; }
+    input, textarea {
+      width: 100%; padding: 13px; border: 1px solid #cbd5e1;
+      border-radius: 8px; font: inherit; font-size: 15px;
+    }
+    textarea { min-height: 100px; resize: vertical; }
+    input:focus, textarea:focus {
+      outline: 2px solid #2457e6; border-color: transparent;
+    }
+    .count { text-align: right; color: #64748b; font-size: 13px; margin-top: 7px; }
+    button {
+      background: #2457e6; color: white; border: 0; border-radius: 8px;
+      padding: 12px 18px; font-weight: 700; cursor: pointer; margin-top: 16px;
+    }
+    button:hover { background: #1945c0; }
+    .preview { background: #f8fafc; border-radius: 10px; padding: 18px; margin-top: 20px; }
+    .preview h3 { color: #1a0dab; font-size: 20px; font-weight: 400; margin: 0 0 7px; overflow-wrap: anywhere; }
+    .preview p { color: #4d5156; line-height: 1.6; margin-bottom: 0; overflow-wrap: anywhere; }
+    .status { color: #475569; font-size: 14px; margin-top: 12px; line-height: 1.5; }
+    .tools-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(190px,1fr)); gap: 14px; }
+    .mini { background: white; padding: 20px; border: 1px solid #e5e7eb; border-radius: 12px; }
+    .mini p { color: #64748b; font-size: 14px; line-height: 1.5; }
+    footer { text-align: center; color: #64748b; padding: 30px 16px; font-size: 13px; }
+    @media(max-width:500px) {
+      header { padding: 16px 5%; }
+      header span { display: none; }
+      .tool { padding: 20px; }
+      main { margin-top: 35px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">MetaPilot</div>
+    <span>Simple tools. Smarter websites.</span>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Free SEO Tools for Everyone</h1>
+      <p>Write better search titles, improve descriptions, and preview how your pages may appear in search results.</p>
+    </section>
+
+    <section class="tool">
+      <h2>SEO Title & Description Checker</h2>
+      <p>Enter your page title and description to check their character counts and preview your snippet.</p>
+
+      <label for="titleInput">Page title</label>
+      <input id="titleInput" maxlength="200" placeholder="e.g. Best Running Shoes for Beginners">
+      <div class="count" id="titleCount">0 characters</div>
+
+      <label for="descInput">Meta description</label>
+      <textarea id="descInput" maxlength="500" placeholder="Write a clear summary of your page..."></textarea>
+      <div class="count" id="descCount">0 characters</div>
+
+      <button id="previewButton" type="button">Preview Search Snippet</button>
+
+      <div class="preview" aria-live="polite">
+        <div style="color:#64748b;font-size:12px;margin-bottom:7px;">SEARCH PREVIEW — APPROXIMATE</div>
+        <h3 id="previewTitle">Your page title will appear here</h3>
+        <p id="previewDesc">Your meta description will appear here.</p>
+      </div>
+      <div class="status" id="status">Enter your text to get started.</div>
+    </section>
+
+    <section class="tool">
+      <h2>More Free Tools</h2>
+      <div class="tools-grid">
+        <div class="mini">
+          <strong>URL Slug Generator</strong>
+          <p>Turn a page title into a clean, readable URL.</p>
+          <label for="slugInput">Enter a title</label>
+          <input id="slugInput" placeholder="My Awesome Blog Post">
+          <button id="slugButton" type="button">Generate Slug</button>
+          <p id="slugResult" aria-live="polite"></p>
+          <button id="copySlug" type="button" hidden>Copy Slug</button>
+        </div>
+        <div class="mini">
+          <strong>Text Case Converter</strong>
+          <p>Convert text to lowercase or uppercase.</p>
+          <label for="caseInput">Enter text</label>
+          <textarea id="caseInput" placeholder="Type or paste text"></textarea>
+          <button id="upperButton" type="button">UPPERCASE</button>
+          <button id="lowerButton" type="button">lowercase</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="tool">
+      <h2>About MetaPilot</h2>
+      <p>MetaPilot provides simple browser-based tools for people creating and improving websites. Your text is processed in this page and is not sent to a server by these tools.</p>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> MetaPilot · Free tools for better websites</footer>
+
+  <script>
+    const titleInput = document.getElementById("titleInput");
+    const descInput = document.getElementById("descInput");
+    const titleCount = document.getElementById("titleCount");
+    const descCount = document.getElementById("descCount");
+    const previewTitle = document.getElementById("previewTitle");
+    const previewDesc = document.getElementById("previewDesc");
+    const status = document.getElementById("status");
+
+    function updatePreview() {
+      const title = titleInput.value.trim();
+      const desc = descInput.value.trim();
+
+      titleCount.textContent = titleInput.value.length + " characters";
+      descCount.textContent = descInput.value.length + " characters";
+      previewTitle.textContent = title || "Your page title will appear here";
+      previewDesc.textContent = desc || "Your meta description will appear here.";
+
+      const messages = [];
+      if (title) {
+        messages.push(title.length <= 60
+          ? "Title length is within a common guideline."
+          : "Title may be long; check how it displays on different devices.");
+      }
+      if (desc) {
+        messages.push(desc.length <= 160
+          ? "Description length is within a common guideline."
+          : "Description may be long for some search snippets.");
+      }
+      status.textContent = messages.join(" ") || "Enter your text to get started.";
+    }
+
+    titleInput.addEventListener("input", updatePreview);
+    descInput.addEventListener("input", updatePreview);
+    document.getElementById("previewButton").addEventListener("click", updatePreview);
+
+    document.getElementById("slugButton").addEventListener("click", () => {
+      const value = document.getElementById("slugInput").value.trim();
+      const slug = value.toLowerCase()
+        .normalize("NFKD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+      document.getElementById("slugResult").textContent =
+        slug || "Enter a title to generate a slug.";
+      document.getElementById("copySlug").hidden = !slug;
+    });
+
+    document.getElementById("copySlug").addEventListener("click", async () => {
+      const slug = document.getElementById("slugResult").textContent;
+      try {
+        await navigator.clipboard.writeText(slug);
+        document.getElementById("copySlug").textContent = "Copied!";
+      } catch {
+        document.getElementById("slugResult").textContent =
+          slug + " (Select and copy this text.)";
+      }
+    });
+
+    document.getElementById("upperButton").addEventListener("click", () => {
+      const input = document.getElementById("caseInput");
+      input.value = input.value.toUpperCase();
+    });
+    document.getElementById("lowerButton").addEventListener("click", () => {
+      const input = document.getElementById("caseInput");
+      input.value = input.value.toLowerCase();
+    });
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
